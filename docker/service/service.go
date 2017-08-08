@@ -272,7 +272,17 @@ func (s *Service) Run(ctx context.Context, commandParts []string, options option
 		logrus.Infof("%s", c.Name())
 		return 0, c.Start(ctx)
 	}
-	return c.Run(ctx, configOverride)
+
+	exitedContainer, err := c.Run(ctx, configOverride)
+	if err != nil {
+		return -1, err
+	}
+
+	if options.Remove {
+		return exitedContainer, c.Remove(ctx, false)
+	}
+
+	return exitedContainer, err
 }
 
 // Info implements Service.Info. It returns an project.InfoSet with the containers

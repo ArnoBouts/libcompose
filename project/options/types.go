@@ -30,7 +30,8 @@ type Create struct {
 
 // Run holds options of compose run.
 type Run struct {
-	Detached bool
+	Detached   bool
+	Remove     bool
 }
 
 // Up holds options of compose up.
