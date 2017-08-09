@@ -32,6 +32,7 @@ type Create struct {
 type Run struct {
 	Detached   bool
 	DisableTty bool
+	Remove     bool
 }
 
 // Up holds options of compose up.
