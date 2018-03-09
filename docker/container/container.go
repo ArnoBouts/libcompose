@@ -194,7 +194,7 @@ func (c *Container) Run(ctx context.Context, configOverride *config.ServiceConfi
 	options := types.ContainerAttachOptions{
 		Stream: true,
 		Stdin:  configOverride.StdinOpen,
-		Stdout: configOverride.Tty,
+		Stdout: true,
 		Stderr: configOverride.Tty,
 	}
 
